@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Messe App</title>
+  
+<title>Messe App</title>
 
-./manifest.json
+<link rel="manifest" href="./manifest.json">
   
 <meta name="theme-color" content="#0f172a">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -67,6 +68,10 @@ body {
 body {
   overflow: hidden;
 }
+
+.page {
+  overflow-y: auto;
+} 
 
 .app {
   width: 100%;
@@ -167,7 +172,8 @@ ul {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgba(255, 255, 255, 0.30);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
   color: #111827;
   padding: 8px 10px;
   border-radius: 14px;
@@ -360,7 +366,7 @@ ul {
 }
 
 .bottom-nav button {
-  hight: var(--nav-height);
+  height: var(--nav-height);
   border: none;
   background: transparent;
   color: #94a3b8;
