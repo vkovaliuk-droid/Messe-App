@@ -341,9 +341,11 @@ ul {
 .bottom-nav {
   position: absolute;
   left: 0;
+  right: 0;
   bottom: 0;
   width: 100%;
-  height: var(--nav-height);
+  height: calc(var(--nav-height) + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
   background: var(--color-nav);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -352,6 +354,7 @@ ul {
 }
 
 .bottom-nav button {
+  hight: var(--nav-height);
   border: none;
   background: transparent;
   color: #94a3b8;
@@ -362,6 +365,7 @@ ul {
   gap: 6px;
   align-items: center;
   justify-content: center;
+  padding: 10px 0 12px;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -371,6 +375,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
 }
 
 .nav-icon svg {
@@ -381,6 +386,7 @@ ul {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+  display: block;
 }
 
 .nav-label {
@@ -545,7 +551,6 @@ ul {
 
     </iframe>
   </div>
-  <nav class="dock-nav">
 
 <nav class="bottom-nav">
 
