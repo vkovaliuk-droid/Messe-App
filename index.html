@@ -130,7 +130,12 @@ ul {
   height: 100%;
   border-radius: var(--radius-large);
   background:
-    linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.92)),
+    linear-gradient(
+      to top,
+      rgba(15, 23, 42, 0.99) 0%,
+      rgba(15, 23, 42, 0.7) 25%,
+      rgba(15, 23, 42, 0.2) 45%,
+      rgba(15, 23, 42, 0) 60%),
     url('https://neuero-farm.de/wp-content/uploads/2026/07/ndv-Kopie.jpg');
   background-size: cover;
   background-position: center;
@@ -162,9 +167,9 @@ ul {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgba(255, 255, 255, 0);
+  background: rgba(255, 255, 255, 0.30);
   color: #111827;
-  padding: 12px 18px;
+  padding: 8px 10px;
   border-radius: 14px;
   font-weight: bold;
   letter-spacing: 1px;
