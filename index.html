@@ -53,6 +53,21 @@ span {
 }
 
 html,
+
+<div id="debugInfo" style="position:fixed; top:8px; left:8px; background:#ef4444; color:#fff; font-size:13px; padding:6px 10px; border-radius:8px; z-index:9999;"></div>
+<script>
+function updateDebug() {
+  const el = document.getElementById('debugInfo');
+  const safeBottom = getComputedStyle(document.documentElement).getPropertyValue('--debug-sab').trim();
+  el.textContent = 'innerHeight: ' + window.innerHeight
+    + ' | vv.height: ' + (window.visualViewport ? Math.round(window.visualViewport.height) : 'n/a')
+    + ' | safe-bottom: ' + safeBottom;
+}
+window.addEventListener('resize', updateDebug);
+window.addEventListener('load', updateDebug);
+updateDebug();
+</script>
+  
 body {
   margin: 0;
   width: 100%;
