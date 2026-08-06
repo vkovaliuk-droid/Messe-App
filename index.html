@@ -30,6 +30,9 @@
 
   --page-padding: 28px;
   --button-font-size: 16px;
+
+  /* TEMPORÄR zur Diagnose des iPad-Leerraum-Problems - danach wieder entfernen */
+  --debug-sab: env(safe-area-inset-bottom, 0px);
 }
 
 html,
@@ -53,7 +56,6 @@ span {
 }
 
 html,
-  
 body {
   margin: 0;
   width: 100%;
@@ -458,7 +460,7 @@ ul {
       </div> 
     </div>
           <button class="primary-button home-button" onclick="showPage('info')">
-           Mehr erfahren
+            Mehr erfahren
           </button>
         
       </div>
@@ -529,10 +531,10 @@ ul {
       <h2>Galerie</h2>
 
       <div class="gallery-box" id="galleryBox">
-        <img src="https://neuero-farm.de/wp-content/uploads/2025/08/NDV-80-120-1-1024x576.webp" alt="Durchlaufvorreiniger Typ NDV">
+        <img id="galleryImage" src="https://neuero-farm.de/wp-content/uploads/2025/08/NDV-80-120-1-1024x576.webp" alt="Durchlaufvorreiniger Typ NDV">
 
         <video id="galleryVideo" controls playsinline style="display: none;">
-          
+          <source id="galleryVideoSource" src="" type="video/mp4">
         </video>
       </div>
 
@@ -559,7 +561,7 @@ ul {
       </button>
     </div>
 
-    </iframe>
+    <iframe id="pdfFrame" src="" title="PDF Anzeige"></iframe>
   </div>
  
 
@@ -850,6 +852,21 @@ document.addEventListener('DOMContentLoaded', function () {
       navigator.serviceWorker.register("./service-worker.js");
     });
   }
+</script>
+
+<!-- TEMPORÄR zur Diagnose des iPad-Leerraum-Problems - danach wieder entfernen -->
+<div id="debugInfo" style="position:fixed; top:8px; left:8px; background:#ef4444; color:#fff; font-size:13px; padding:6px 10px; border-radius:8px; z-index:9999;"></div>
+<script>
+  function updateDebug() {
+    const el = document.getElementById('debugInfo');
+    const safeBottom = getComputedStyle(document.documentElement).getPropertyValue('--debug-sab').trim();
+    el.textContent = 'innerHeight: ' + window.innerHeight
+      + ' | vv.height: ' + (window.visualViewport ? Math.round(window.visualViewport.height) : 'n/a')
+      + ' | safe-bottom: ' + safeBottom;
+  }
+  window.addEventListener('resize', updateDebug);
+  window.addEventListener('load', updateDebug);
+  updateDebug();
 </script>
 
 </body>
