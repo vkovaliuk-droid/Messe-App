@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Messe App</title>
 
+<title>Messe App</title>&#8203  
+  
 <link rel="manifest" href="./manifest.json">
   
 <meta name="theme-color" content="#0f172a">
@@ -30,9 +32,6 @@
 
   --page-padding: 28px;
   --button-font-size: 16px;
-
-  /* TEMPORÄR zur Diagnose des iPad-Leerraum-Problems - danach wieder entfernen */
-  --debug-sab: env(safe-area-inset-bottom, 0px);
 }
 
 html,
@@ -852,21 +851,6 @@ document.addEventListener('DOMContentLoaded', function () {
       navigator.serviceWorker.register("./service-worker.js");
     });
   }
-</script>
-
-<!-- TEMPORÄR zur Diagnose des iPad-Leerraum-Problems - danach wieder entfernen -->
-<div id="debugInfo" style="position:fixed; top:8px; left:8px; background:#ef4444; color:#fff; font-size:13px; padding:6px 10px; border-radius:8px; z-index:9999;"></div>
-<script>
-  function updateDebug() {
-    const el = document.getElementById('debugInfo');
-    const safeBottom = getComputedStyle(document.documentElement).getPropertyValue('--debug-sab').trim();
-    el.textContent = 'innerHeight: ' + window.innerHeight
-      + ' | vv.height: ' + (window.visualViewport ? Math.round(window.visualViewport.height) : 'n/a')
-      + ' | safe-bottom: ' + safeBottom;
-  }
-  window.addEventListener('resize', updateDebug);
-  window.addEventListener('load', updateDebug);
-  updateDebug();
 </script>
 
 </body>
